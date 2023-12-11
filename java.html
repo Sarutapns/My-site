@@ -7,14 +7,18 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 body, html {
   height: 100%;
   color: #777;
   line-height: 1.8;
+  background-color: seashell;
+  
 }
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
+
 
 </style>
 </head>
@@ -43,62 +47,197 @@ body, html {
 <h1>The Document Object</h1>
 
 <hr>
-<h2>Just change A - Z</h2>
-<p id="demo">Hi</p>
+<h2>แปลงจำนวนวันเป็นวินาที</h2>
+
+<label for="numberOfDays">ป้อนจำนวนวัน: </label>
+<input type="number" id="numberOfDays" placeholder="ป้อนจำนวนวัน">
+<button onclick="convertDaysToSeconds()" style="border: salmon ; background-color: salmon;">แปลง</button>
+<p id="result">ผลลัพธ์: </p>
 
 <hr>
-<h2>Click to change</h2>
-<p id="demo2">Hi</p>
-<button onclick="myFunction()">Click me</button>
+<h2>บวกเลข</h2>
+<input type="button" value="คลิกเพื่อบวกเลข" onclick="onButtonClick()" style="background-color: salmon; border: salmon; ">
 
 <hr>
-<h2>Calculate number</h2>
-<input id="numb">
-<button type="button" onclick="myFunction2()">Submit</button>
-<p id="demo3"></p>
+<h2>ค้นหาเลขคู่</h2>
+<input type="number" id="numInput" placeholder="ป้อนตัวเลข">
+  <button onclick="findEvenNumbers()" style="background-color: salmon;border: salmon;">ค้นหา</button>
+<p id="demo">ผลลัพธ์: </p>
 
+<hr>
+<h2>คำนวณความยาวเส้นรอบวงของวงกลม</h2>
+<button onclick="onButtonClick()" style="background-color: salmon;border: salmon;padding: 3px 15px;">คลิก</button>
+<hr>
+<h2>สุ่มตัวเลข</h2>
+<button onclick="rollDice()" style="background-color: salmon;border: salmon;">คลิกเพื่อสุ่มตัวเลข</button>
+<p>ผลลัพธ์: <span id="diceResult"></span></p>
 <!-- End page content -->
 </div>
+<hr>
+
+<!--<canvas>-->
+  <div>
+  <canvas id="myChart" style="width:200%;max-width:800px "></canvas>
+</div>
+<hr>
+<canvas id="myChart2"></canvas>
+<hr>
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+</footer> 
+
 <script>
-//document.getElementById("demo").innerHTML = "Hello World";
 
-function printAlphabets() {
-// สร้างตัวแปรเพื่อเก็บตัวอักษร A-Z
-const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function daysToSeconds(days) {
+      const secondsInADay = 24 * 60 * 60; 
+      return days * secondsInADay;
+    }
 
-// ใช้ forEach เพื่อวนลูปผ่านทุกตัวอักษร
-alphabets.split('').forEach((alphabet, index) => {
-  // ใช้ setTimeout เพื่อกำหนดระยะเวลาการแสดงผล
-  setTimeout(() => {
-    document.getElementById("demo").innerHTML = alphabet;
-    console.log(alphabet);
-  }, index * 1000); // 1000 milliseconds = 1 วินาที
-});
-}
-printAlphabets();
+    function convertDaysToSeconds() {
+      const inputDays = parseInt(document.getElementById('numberOfDays').value);
 
-function myFunction() {
-  document.getElementById("demo2").innerHTML = "Hello World";
-}
+      if (isNaN(inputDays)) {
+        document.getElementById('result').innerText = 'โปรดป้อนจำนวนวัน';
+        return;
+      }
 
-function myFunction2() {
-// Get the value of the input field with id="numb"
-let x = document.getElementById("numb").value;
-// If x is Not a Number or less than one or greater than 10
-let text;
-if (isNaN(x) || x < 1 || x > 10) {
-  text = "Input not valid";
-} else {
-  text = "Input OK";
-}
-document.getElementById("demo3").innerHTML = text;
-}
+      const seconds = daysToSeconds(inputDays);
+      document.getElementById('result').innerText = `${inputDays} วัน เท่ากับ ${seconds} วินาที`;
+    }
+  </script>
 
+  <script>
+    function findEvenNumbers() {
+      const inputNumber = parseInt(document.getElementById('numInput').value);
 
+      if (isNaN(inputNumber)) {
+        document.getElementById('result').innerText = 'โปรดป้อนตัวเลข';
+        return;
+      }
+
+      const isEven = inputNumber % 2 === 0;
+
+      if (isEven) {
+        document.getElementById('demo').innerText = `${inputNumber} เป็นเลขคู่`;
+      } else {
+        document.getElementById('demo').innerText = `${inputNumber} ไม่เป็นเลขคู่`;
+      }
+    }
 </script>
+<script>
+  function Accumulator(startingValue) {
+    this.currentValue = startingValue;
+
+    this.read = function() {
+      var inputValue = parseFloat(prompt("โปรดป้อนค่าที่ต้องการบวกเข้ากับค่าปัจจุบัน"));
+      if (!isNaN(inputValue)) {
+        this.currentValue += inputValue;
+      } else {
+        alert("โปรดป้อนตัวเลขที่ถูกต้อง");
+      }
+    };
+
+    this.show = function() {
+      alert("ค่า current Value คือ: " + this.currentValue);
+    };
+  }
+
+  var accumulator = new Accumulator(0);
+
+  function onButtonClick() {
+    accumulator.read();
+    accumulator.show();
+  }
+</script>
+
+<script>
+  function ความยาวเส้นรอบวงของวงกลม(รัศมี) {
+    var ค่าคงที่พาย = Math.PI * 2;
+    var ความยาว = ค่าคงที่พาย * รัศมี; 
+    return ความยาว;
+  }
+
+  function onButtonClick() {
+    var รัศมีทดสอบ = parseFloat(prompt('ป้อนค่ารัศมีของวงกลม'));
+    if (!isNaN(รัศมีทดสอบ)) {
+      var ค่าความยาว = ความยาวเส้นรอบวงของวงกลม(รัศมีทดสอบ);
+      alert("ความยาวเส้นรอบวงของวงกลมที่มีรัศมี " + รัศมีทดสอบ + " คือ " + ค่าความยาว);
+    } else {
+      alert("โปรดป้อนตัวเลขที่ถูกต้อง");
+    }
+  }
+</script>
+
+<script>
+  function rollDice() {
+    const diceResult = Math.floor(Math.random() * 99) + 1;
+    
+    document.getElementById("diceResult").innerText = diceResult;
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+const xValues = ["เปลี่ยนกันไหม", "เป็นไรมั้ย", "อิจฉา", "drunk text", "pick up the phone"];
+const yValues = [50, 49, 44, 50, 35];
+const barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "เพลงที่ชอบ" 
+    }
+  }
+});
+</script>
+<script>
+  const xyValues = [
+    {x:50, y:7},
+    {x:60, y:8},
+    {x:70, y:8},
+    {x:80, y:9},
+    {x:90, y:9},
+    {x:100, y:9},
+    {x:110, y:10},
+    {x:120, y:11},
+    {x:130, y:14},
+    {x:140, y:14},
+    {x:150, y:15}
+  ];
+  
+  new Chart("myChart2", {
+    type: "scatter",
+    data: {
+      datasets: [{
+        pointRadius: 4,
+        pointBackgroundColor: "rgb(0,0,255)",
+        data: xyValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      scales: {
+        xAxes: [{ticks: {min: 40, max:160}}],
+        yAxes: [{ticks: {min: 6, max:16}}],
+      }
+    }
+  });
+  </script>
 </body>
 </html>

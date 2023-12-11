@@ -12,6 +12,7 @@ body, html {
   height: 100%;
   color: #777;
   line-height: 1.8;
+  background-color: rgb(232, 216, 240);
 }
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
@@ -44,37 +45,113 @@ body, html {
         <h1>API</h1>
         
         <hr>
-        <h2>Click to change</h2>
-        <p id="demo2">Hi</p>
-        <button onclick="myFunction()">Click me</button>
 
+        <h2>Click to get a Random Image</h2>
+        <img id="randomImage" src="https://source.unsplash.com/random/300x300" alt="Random Image">
+        <button onclick="getRandomImage()" style="background-color: aquamarine;border: aquamarine; position: relative;top: 140px;">Get Random Image</button>
 <!-- End page content -->
-</div>
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
-<script>
-    //document.getElementById("demo").innerHTML = "Hello World";
+   <hr>
+<h2>Click to get a Random Country Name</h2>
+<p id="randomCountry">Country name will appear here</p>
+<button onclick="getRandomCountry()" style="background-color: aquamarine; border: aquamarine;">Get Random Country</button>
+    <hr>
+      <form 
+  method="POST" 
+  action="https://script.google.com/macros/s/AKfycby5ETS_59HOINQJrthhN6su_GNaQ99_ReV0DgoFe_aG3TXuWPQA8jBVKdf24AHImlE2/exec">
+  <label for="Email">Email :</label>
+  <input name="Email" type="email" required>
+
+  <label for="Name">Name :</label>
+  <input name="Name" type="text" required>
+
+
+  <button type="submit" style="background-color: aquamarine; border: aquamarine;">Send</button>
+</form>
+<br>
+<iframe width="400" height="300" src="https://docs.google.com/spreadsheets/d/1_dHEA4cfpMxXPnDHZc_NhEYEG4Kmd9RXU2cUCieZ5uE/edit#gid=0"></iframe>
+ <hr>     
+
+<h2>Coinbase API Demo</h2>
+<div id="lastUpdateTime"></div>
+<div id="prices"></div>
+<hr>
+    </div> 
+        <script>
+          //document.getElementById("demo").innerHTML = "Hello World";
+
+          function getRandomImage() {
   
-  
-    function myFunction() {
-      fetch("https://catfact.ninja/fact")
-        .then(function(response){
-          return response.json()
+      const randomNumber = Math.floor(Math.random() * 100); // สุ่มตัวเลขเพื่อใช้เป็นค่าสำหรับคำค้นหาแบบสุ่ม
+      const randomImageUrl = `https://source.unsplash.com/300x300/?random&${randomNumber}`; // Unsplash API ที่รับพารามิเตอร์สำหรับการกำหนดความกว้างและความสูงของภาพ
+
+      document.getElementById("randomImage").src = randomImageUrl;
+    }
+function getRandomCountry() {
+      fetch("https://restcountries.com/v3.1/all")
+        .then(function(response) {
+          return response.json();
         })
-        .then(function(data){
-          let txt = "";
-            for (let x in data) {
-              txt += data[x] + " ";
-            document.getElementById("demo2").innerHTML = txt;
-            };
-        
-          return data;
-        })  
-        
-   
+        .then(function(data) {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          const randomCountry = data[randomIndex].name.common;
+
+          document.getElementById("randomCountry").textContent = `Random Country: ${randomCountry}`;
+        })
+        .catch(function(error) {
+          console.log("Error fetching country data:", error);
+        });
+    }
+
+  function fetchPrices() {
+      var now = new Date();
+      var currentTime = now.toLocaleTimeString();
+
+      fetch('https://api.coinbase.com/v2/exchange-rates?currency=USDT')
+          .then(response => response.json())
+          .then(data => {
+              displayPrices(data);
+              displayLastUpdateTime(currentTime);
+          })
+          .catch(error => {
+              console.error('Error fetching data:', error);
+              alert('Error fetching data. Please try again.');
+          });
   }
+ 
+ 
+ 
+  function displayPrices(data) {
+      var pricesDiv = document.getElementById('prices');
+      var rates = data.data.rates;
+
+      var currencies = ['BTC', 'ETH', 'XRP', 'LTC', 'DOGE', 'BCH', 'BNB', 'LINK', 'XLM'];
+      var pricesHtml = '<p>1 USDT can buy:</p><ul>';
+
+      currencies.forEach(currency => {
+          if (rates[currency]) {
+              pricesHtml += `<li>${currency}: ${rates[currency]}</li>`;
+          } else {
+              pricesHtml += `<li>${currency}: N/A</li>`;
+          }
+      });
+
+      pricesHtml += '</ul>';
+      pricesDiv.innerHTML = pricesHtml;
+  }
+
+  function displayLastUpdateTime(currentTime) {
+      var updateTimeDiv = document.getElementById('lastUpdateTime');
+      updateTimeDiv.innerHTML = `<p>Last Update Time: ${currentTime}</p>`;
+  }
+
+  fetchPrices();
+
+  setInterval(fetchPrices, 3000);
+  </script>
+  
+  
+
+  
   
   
   </script>
