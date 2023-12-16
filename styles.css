@@ -1,0 +1,342 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+   
+}
+
+body{
+  min-height: 100vh;
+  background-color: rgb(252, 249, 249);
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .50s ease;
+    background: transparent;
+    padding: 18px 12%;
+    background-color: white;
+    box-shadow:  0 1px 2px gainsboro ;
+    padding: 0;
+    
+  
+     
+}
+ a img{
+  position: relative;
+  top: 2px;
+  left: 60px;
+  width: 200px;
+
+ }
+
+.navbar{
+  display: flex;
+  list-style: none;
+  
+ 
+}
+ .navbar a{
+   text-decoration: none; 
+   color: black;
+   font-size: 1.rm;
+   font-weight: bold;
+   padding: 5px 0; 
+   margin: 0 30px;
+   transition: all .50s ease;
+   position: relative;
+   right: -70px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ .main{
+  display: flex;
+ }
+
+ .main img{
+  width: 30px;
+  margin: 20px;
+  position: relative;
+  right: -80px;
+ }
+ 
+ .badge ::after{
+    content: '7';
+    position: relative;
+    top: -2.5rem;
+    right: -2rem;
+    padding: 3px 8px;
+    background-color: red;
+    color: whitesmoke;
+    border-radius: 50%;
+ }
+
+.ls a{
+ text-decoration: none; 
+   color: black;
+   font-size: 1.rm;
+   padding: 5px 0; 
+   font-weight: bold;
+   margin: 0 10px;
+   position: relative;
+   right: 60px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.text h1{
+position: relative;
+top: 180px;
+left: 90px;
+font-size: 40px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container{
+  width: 600px;
+  height: 250px;
+  border: 2px solid gainsboro;
+  border-radius: 12px;
+  padding: 5px ;
+  position: relative;
+  top: 220px;
+  left: 100px;
+  display: flex;
+  background-color: white;
+  
+}
+.del img{
+  width: 50px;
+  position: relative;
+  top: 90px;
+  left: 30px;
+}
+
+.docs img{
+  width: 200px;
+  position: relative;
+  left: 60px;
+  top: 1rem;
+
+}
+
+h2{
+  position: relative;
+  top: 50px;
+  left: 80px;
+  font-weight: 100;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h4{
+  position: relative;
+  top: -4rem;
+  left: 90px;
+  color: white;
+  font-size: 13px;
+  font-weight: 100;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.t4{
+  position: relative;
+  left: 100px;
+}
+
+.drop{
+  position: relative;
+  top: 92px;
+  right: -1rem;
+}
+
+.drop2{
+  position: relative;
+  top: 92px;
+  right: -1rem;
+}
+
+.circle2{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 1px;
+  display: inline-block;
+  background-color: lightgray;
+  position: relative;
+  top: 100px;
+  right: 160px;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 1px;
+  display: inline-block;
+  background-color: lightgray;
+  position: relative;
+  top: 100px;
+  right: 150px;
+}
+
+
+select{
+  padding: 10px;
+  border-radius: 5%;
+  border-color:  aquamarine;
+  
+}
+
+.container2{
+  width: 600px;
+  height: 250px;
+  border: 2px solid gainsboro;
+  border-radius: 12px;
+  padding: 5px ;
+  position: relative;
+  top: 260px;
+  left: 100px;
+  display: flex;
+  background-color: white;
+}
+
+.del2 img{
+  width: 50px;
+  position: relative;
+  top: 90px;
+  left: 30px;
+}
+
+.gs img{
+  width: 200px;
+  position: relative;
+  left: 60px;
+  top: 1rem;
+}
+
+.text3 {
+  position: relative;
+  top: 110px;
+  left: 430px;
+  font-size: 20px;
+  color: rgb(56, 56, 56);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text4 p{
+  position: relative;
+  top: 150px;
+  left: 430px;
+  font-size: 20px;
+  color: rgb(56, 56, 56);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+ 
+.container3{
+  width: 600px;
+  height: 400px;
+  border: 2px solid gainsboro;
+  border-radius: 12px;
+  position: relative;
+  top: -325px;
+  right: -50%;
+}
+
+.text5 p{
+  font-size: 23px;
+  font-weight: 300;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: relative;
+  top: 30px;
+  left: 30px;
+}
+
+.text6 p{
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: relative;
+  top: 50px;
+  left: 30px;
+  color: rgb(187, 187, 187);
+}
+
+.text7 p{
+  font-size: 19px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: relative;
+  top: 30px;
+  right: -470px;
+  color: rgb(53, 50, 81);
+}
+
+.container3 img{
+  width: 20px;
+  position: relative;
+  top: 70px;
+  left: 30px;
+}
+
+input{
+  padding: 10px;
+  border-color: rgb(219, 219, 219);
+  position: relative;
+  top: 65px;
+  left: 45px;
+  border-radius: 5px;
+  width: 250px;
+  color: gainsboro;
+}
+
+button{
+  position: relative;
+  top: 65px;
+  left: 70px;
+  width: 200px;
+  padding: 9px;
+  border-radius: 10px;
+  border-color: rgb(118, 237, 196);
+  background-color: white;
+  color: rgb(118, 237, 196);
+}
+
+hr{
+  position: relative;
+  top: 100px;
+  left: 30px;
+  width: 540px;
+}
+
+.text8{
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: relative;
+  top: 140px;
+  left: 30px;
+}
+
+.text9{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(37, 175, 129);
+  position: relative;
+  top: 120px;
+  left: 400px;
+}
+
+.bt2{
+  position: relative;
+  top: 150px;
+  left: 55px;
+  width: 80%;
+  background-color:rgb(29, 191, 151) ;
+}
+
+
+
+
+
+
