@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .login-form {
+    width: 50%;
+    background: rgb(255, 255, 255);
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    position: relative;
+    top: 15rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+  }
+  .login-form > input,
+  select {
+    font-size: 20px;
+  }
+  
+  body{
+    background-image: url('toto.jpg');}
