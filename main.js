@@ -10,7 +10,7 @@ const validateInput = (inputObj) => {
     if (trimmedUsername.length < 4) {
       errors.username = "ชื่อผู้ใช้อย่างน้อย 3 ตัวอักษร";
     } else if (/^\d/.test(trimmedUsername)) {
-        errors.username = "=ชื่อผู้ใช้ห้ามนำหน้าด้วยตัวเลข";
+        errors.username = "ชื่อผู้ใช้ห้ามนำหน้าด้วยตัวเลข";
     } else if (/\s/.test(trimmedUsername)) {
       errors.username = "ชื่อผู้ใช้ห้ามมีช่องว่าง";
     }
